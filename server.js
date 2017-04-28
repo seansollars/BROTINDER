@@ -34,10 +34,8 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/',express.static('../WebClient/'));
 
-app.use('/', express.static('../WebClient/'));
-
+app.use('/', express.static(__dirname + '/WebClient'));
 
 
 
@@ -57,6 +55,11 @@ app.post('/echo', function(req,res) {
    });
 });
 
+app.post('/bro', function(req, res) {
+	var bro = req.body;
+	console.log('post /bro = ' + JSON.stringify(bro));
+	res.send('ok bro');
+});
 
 server.listen(3000,function () {
 	console.log('example app listening on port 3000!')
