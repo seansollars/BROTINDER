@@ -3,10 +3,18 @@ $(document).ready(function () {
 		console.log($('#broWeight').val());
 		var json = {};
 		json.weight = $('#broWeight').val();
+		json.gender = $('#broGender').val();
+		json.age = $('#Broage').val();
+		json.squat = $('#brosquat').val();
+		json.dead = $('#broDead').val();
+		json.last = $('#BroLast').val();
+		json.bench = $('#broBench').val();
+		json.fname = $('#broFirst').val();
+		
 		http.post('/bro', json, function(data, status, xhr) {
-			console.log('it sent');
+			console.log('Match');
 		}, function(xhr, status, error) {
-			console.log('it did not send');
+			console.log('Not a match');
 		});
 	});
 	
@@ -14,7 +22,7 @@ $(document).ready(function () {
 	var http = {};
 	http.post = function (url, json, success, error) {
 		$.ajax({
-			url: 'http://localhost:3000' + url
+			url: 'http://10.10.88.180:3000' + url
 			, method: 'POST'
 			, data: json
 			, success: function (data, statusText, jqXHR) {
