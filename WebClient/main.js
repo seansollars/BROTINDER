@@ -2,13 +2,13 @@ $(document).ready(function () {
 	$('#broSend').click(function () {
 		console.log($('#broWeight').val());
 		var json = {};
-		json.weight = $('#broWeight').val();
+		json.weight = parseInt($('#broWeight').val();
 		json.gender = $('#broGender').val();
-		json.age = $('#Broage').val();
-		json.squat = $('#brosquat').val();
-		json.dead = $('#broDead').val();
+		json.age = parseInt($('#Broage').val();
+		json.squat = parseInt($('#brosquat').val());
+		json.dead = parseInt($('#broDead').val();
 		json.last = $('#BroLast').val();
-		json.bench = $('#broBench').val();
+		json.bench = parseInt($('#broBench').val();
 		json.fname = $('#broFirst').val();
 		
 		http.post('/bro', json, function(data, status, xhr) {
@@ -34,3 +34,4 @@ $(document).ready(function () {
 		});
 	};
 });
+
