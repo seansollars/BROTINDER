@@ -67,3 +67,18 @@ app.post('/bro', function(req, res) {
 server.listen(3000,function () {
 	console.log('example app listening on port 3000!')
 });
+app.get('/bro', function(req, res) {
+    var data = req.body;
+    var bench = parseInt(req.query.bench);
+    var min = bench - 25;
+    var max = bench + 25;
+    Mongo.ops.find('bro', { "bench" : { $gt : min, $lt : max } }, function(err, docs) {
+        if(err) {
+            console.log(err);
+            res.status(500).send('internal server error');
+        } else {
+            console.log(docs);
+            res.status(200).send(docs);
+        }
+    });
+});
